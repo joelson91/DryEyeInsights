@@ -1,6 +1,5 @@
 from django.db import models
 from django.core.validators import RegexValidator
-from datetime import date
 
 GENERO_CHOICES = (('M', 'Masculino'), ('F', 'Feminino'))
 PHONE_VALIDATOR = [RegexValidator(regex=r'^\d{10,11}$', message='Telefone inválido')]
@@ -67,6 +66,30 @@ class Questionario(models.Model):
     id_pesquisador = models.ForeignKey(Pesquisador, on_delete=models.CASCADE)
     id_participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
     dt_envio = models.DateTimeField(auto_now_add=True, verbose_name='Data de envio')
+    duracao_sono = models.FloatField(verbose_name='Duração do sono')
+    qualidade_sono = models.IntegerField(verbose_name='Qualidade do sono')
+    nivel_estresse = models.IntegerField(verbose_name='Nível de estresse')
+    pressao_arterial = models.CharField(max_length=20, verbose_name='Pressão sanguínea')
+    frequencia_cardiaca = models.IntegerField(verbose_name='Frequência de cardíaca')
+    passos_diarios = models.IntegerField(verbose_name='Passos diários')
+    atividade_fisica = models.IntegerField(verbose_name='Atividade Física')
+    altura = models.IntegerField(verbose_name='Altura')
+    peso = models.FloatField(verbose_name='Peso')
+    disturbio_sono = models.BooleanField(verbose_name='Distúrbio do sono')
+    despertares_noturnos = models.BooleanField(verbose_name='Despertares noturnos')
+    sonolencia_diurna = models.BooleanField(verbose_name='Sonolência diurna')
+    consumo_cafeina = models.BooleanField(verbose_name='Consome cafeína')
+    consumo_alcool = models.BooleanField(verbose_name='Consome álcool')
+    tabagismo = models.BooleanField(verbose_name='Fumante')
+    problema_medico = models.BooleanField(verbose_name='Probelma médico')
+    tomando_medicacao = models.BooleanField(verbose_name='Tomando medicação')
+    uso_smartphone = models.BooleanField(verbose_name='Usa smartphone')
+    tempo_medio_tela = models.FloatField(verbose_name='Tempo médio de tela')
+    filtro_luz_azul = models.BooleanField(verbose_name='Filtro de luz azul')
+    fadiga_ocular = models.BooleanField(verbose_name='Fadiga ocular')
+    vermelhidao_ocular = models.BooleanField(verbose_name='Vermelhidão ocular')
+    irritacao_ocular = models.BooleanField(verbose_name='Irritação ocular')
+    doenca_olho_seco = models.BooleanField(verbose_name='Olho seco')
 
     def __str__(self):
         return f'Questionário {self.id_questionario} - Pesquisador: {self.id_pesquisador.nome}'
