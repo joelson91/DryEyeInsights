@@ -2,3 +2,4 @@
 .idea/
 core/migrations/
 db.sqlite3
+.env
