@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Pesquisador, Participante
+from .models import Pesquisador, Participante, Questionario
 
 
 @admin.register(Pesquisador)
@@ -19,3 +19,5 @@ class ParticipanteAdmin(admin.ModelAdmin):
     list_display = ('nome', 'email', 'telefone')
     list_filter = ('nome', 'email')
     search_fields = ('nome', 'email')
+
+admin.site.register(Questionario)
