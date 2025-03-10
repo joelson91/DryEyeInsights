@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import RegexValidator
+from django.contrib.auth.models import User
 
 GENERO_CHOICES = (('M', 'Masculino'), ('F', 'Feminino'))
 PHONE_VALIDATOR = [RegexValidator(regex=r'^\d{10,11}$', message='Telefone inválido')]
@@ -7,6 +8,7 @@ PHONE_VALIDATOR = [RegexValidator(regex=r'^\d{10,11}$', message='Telefone invál
 
 class Pesquisador(models.Model):
     id_pesquisador = models.AutoField(primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Usuário')
     nome = models.CharField(max_length=100, verbose_name='Nome')
     genero = models.CharField(choices=GENERO_CHOICES, max_length=1, verbose_name='Gênero')
     dt_nascimento = models.DateField(verbose_name='Data de nascimento')
