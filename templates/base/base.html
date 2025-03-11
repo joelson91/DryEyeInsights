@@ -11,11 +11,9 @@
     <nav>
         <ul>
             {% if user.is_authenticated %}
-                <li>
-                    <form action="{% url 'logout' %}" method="post">{% csrf_token %}
-                        <button type="submit">Sair</button>
-                    </form>
-                </li>
+                <li><a href="{% url 'painel' %}">Painel</a></li>
+                <li><a href="{% url 'ver_participantes' %}">Participantes</a></li>
+                <li><a href="{% url 'criar_participante' %}">Novo participante</a></li>
             {% else %}
                 <li><a href="{% url 'login' %}">Entrar</a></li>
             {% endif %}
