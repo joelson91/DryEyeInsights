@@ -8,4 +8,8 @@
         <li><a href="{% url 'ver_participantes' %}">Ver participantes</a></li>
     </ul>
 
+    <form action="{% url 'logout' %}" method="post">{% csrf_token %}
+        <button type="submit">Sair</button>
+    </form>
+
 {% endblock %}
