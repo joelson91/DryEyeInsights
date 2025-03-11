@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from core.models import Participante, Pesquisador
 from core.forms import ParticipanteForm, QuestionarioForm
 
@@ -33,19 +33,32 @@ def ver_participantes(request):
 
 
 @login_required
-def detalhe_participante(request, participante_id):
-    dados = Participante.objects.get(id=participante_id)
-    pesquisador = request.user.id
-    context = {'participante': dados, 'pesquisador': pesquisador}
-    render(request, 'painel/detalhe_participante.html', context=context)
+def detalhe_participante(request, id_participante):
+    participante = get_object_or_404(Participante, pk=id_participante)
+    return render(request, 'painel/detalhe_participante.html', {'participante': participante})
 
 
 @login_required
-def aplicar_questionario(request):
+def editar_participante(request, id_participante):
+    participante = get_object_or_404(Participante, pk=id_participante)
+
+    if request.method == 'POST':
+        form = ParticipanteForm(request.POST, instance=participante)
+        if form.is_valid():
+            form.save()
+            return redirect('painel')
+    else:
+        form = ParticipanteForm(instance=participante)
+
+    return render(request, 'painel/registro_participante.html', {'form': form})
+
+
+@login_required
+def aplicar_questionario(request, id_participante):
     form = QuestionarioForm()
 
-    pesquisador = request.user.id
-    participante = request.user.id
+    pesquisador = get_object_or_404(Pesquisador, user=request.user)
+    participante = get_object_or_404(Participante, pk=id_participante)
 
     if request.method == 'POST':
         form = QuestionarioForm(request.POST)
@@ -56,4 +69,4 @@ def aplicar_questionario(request):
             questionario.save()
             return redirect('painel')
     else:
-        render(request, 'painel/questionario.html', {'form': form})
+        return render(request, 'painel/questionario.html', {'form': form})
