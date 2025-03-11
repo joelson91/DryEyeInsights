@@ -5,5 +5,6 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'index.html')
 
-#def painel(request):
-#    return render(request, 'painel.html')
+@login_required
+def painel(request):
+    return render(request, 'painel/painel.html')
