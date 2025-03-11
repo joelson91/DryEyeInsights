@@ -67,6 +67,6 @@ def aplicar_questionario(request, id_participante):
             questionario.id_pesquisador = pesquisador
             questionario.id_participante = participante
             questionario.save()
-            return redirect('painel')
+            return redirect(detalhe_participante, id_participante)
     else:
         return render(request, 'painel/questionario.html', {'form': form})
