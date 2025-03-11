@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+	<h1>Questionário</h1>
+    <form action="">
+    {% csrf_token %}
+    {{ form }}
+    </form>
+{% endblock %}

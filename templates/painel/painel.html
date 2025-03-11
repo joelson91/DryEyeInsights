@@ -1,5 +1,11 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h1>Bem-vindo, {{ user.username }}</h1>
+    <h1>Bem-vindo, {{ user.username }}</h1>
+
+    <ul>
+        <li><a href="{% url 'criar_participante' %}">Cadastrar Participante</a></li>
+        <li><a href="{% url 'ver_participantes' %}">Ver participantes</a></li>
+    </ul>
+
 {% endblock %}

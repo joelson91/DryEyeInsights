@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -11,11 +12,9 @@
         <ul>
             {% if user.is_authenticated %}
                 <li>
-                    <a>
-                        <form action="{% url 'logout' %}" method="post">{% csrf_token %}
-                            <button type="submit">Sair</button>
-                        </form>
-                    </a>
+                    <form action="{% url 'logout' %}" method="post">{% csrf_token %}
+                        <button type="submit">Sair</button>
+                    </form>
                 </li>
             {% else %}
                 <li><a href="{% url 'login' %}">Entrar</a></li>
