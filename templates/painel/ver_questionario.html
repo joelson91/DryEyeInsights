@@ -1,0 +1,112 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h1>Detalhes do questionário</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Atributo</th>
+            <th>Valor</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Duração do sono</td>
+            <td>{{ questionario.duracao_sono }}</td>
+        </tr>
+        <tr>
+            <td>Qualidade do sono</td>
+            <td>{{ questionario.qualidade_sono }}</td>
+        </tr>
+        <tr>
+            <td>Nível de estresse</td>
+            <td>{{ questionario.nivel_estresse }}</td>
+        </tr>
+        <tr>
+            <td>Pressão sanguínea</td>
+            <td>{{ questionario.pressao_arterial }}</td>
+        </tr>
+        <tr>
+            <td>Frequência cardíaca</td>
+            <td>{{ questionario.frequencia_cardiaca }}</td>
+        </tr>
+        <tr>
+            <td>Passos diários</td>
+            <td>{{ questionario.passos_diarios }}</td>
+        </tr>
+        <tr>
+            <td>Atividade Física</td>
+            <td>{{ questionario.atividade_fisica }}</td>
+        </tr>
+        <tr>
+            <td>Altura</td>
+            <td>{{ questionario.altura }}</td>
+        </tr>
+        <tr>
+            <td>Peso</td>
+            <td>{{ questionario.peso }}</td>
+        </tr>
+        <tr>
+            <td>Distúrbio do sono</td>
+            <td>{% if questionario.disturbio_sono %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Despertares noturnos</td>
+            <td>{% if questionario.despertares_noturnos %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Sonolência diurna</td>
+            <td>{% if questionario.sonolencia_diurna %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Consome cafeína</td>
+            <td>{% if questionario.consumo_cafeina %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Consome álcool</td>
+            <td>{% if questionario.consumo_alcool %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Fumante</td>
+            <td>{% if questionario.tabagismo %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Problema médico</td>
+            <td>{% if questionario.problema_medico %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Tomando medicação</td>
+            <td>{% if questionario.tomando_medicacao %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Usa smartphone</td>
+            <td>{% if questionario.uso_smartphone %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Tempo médio de tela</td>
+            <td>{{ questionario.tempo_medio_tela }}</td>
+        </tr>
+        <tr>
+            <td>Filtro de luz azul</td>
+            <td>{% if questionario.filtro_luz_azul %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Fadiga ocular</td>
+            <td>{% if questionario.fadiga_ocular %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Vermelhidão ocular</td>
+            <td>{% if questionario.vermelhidao_ocular %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Irritação ocular</td>
+            <td>{% if questionario.irritacao_ocular %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        <tr>
+            <td>Olho seco</td>
+            <td>{% if questionario.doenca_olho_seco %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
