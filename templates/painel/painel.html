@@ -1,19 +1,9 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    {% if pesquisador.genero == 'M' %}
-        <h1>Bem-vindo, {{ user.first_name }}</h1>
-    {% else %}
-        <h1>Bem-vinda, {{ user.first_name }}</h1>
-    {% endif %}
-
+    <h1>Painel</h1>
     <ul>
         <li><a href="{% url 'criar_participante' %}">Cadastrar Participante</a></li>
         <li><a href="{% url 'ver_participantes' %}">Ver participantes</a></li>
     </ul>
-
-    <form action="{% url 'logout' %}" method="post">{% csrf_token %}
-        <button type="submit">Sair</button>
-    </form>
-
 {% endblock %}

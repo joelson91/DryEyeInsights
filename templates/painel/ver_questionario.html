@@ -109,4 +109,7 @@
         </tr>
         </tbody>
     </table>
+
+    <a href="{% url 'editar_questionario' questionario.id_questionario %}">Editar questionário</a>
+    <a href="{% url 'excluir_questionario' questionario.id_questionario %}">Excluir questionário</a>
 {% endblock %}

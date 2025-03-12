@@ -13,6 +13,8 @@
 
     <a href="{% url 'editar_participante' participante.id_participante %}">Editar dados</a>
 
+    <a href="{% url 'excluir_participante' participante.id_participante %}">Excluir participante</a>
+
     {% if questionario_preenchido %}
         <a href="{% url 'ver_questionario' participante.id_participante %}">Ver questionário</a>
 
