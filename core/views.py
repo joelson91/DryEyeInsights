@@ -5,13 +5,17 @@ from core.forms import ParticipanteForm, QuestionarioForm
 
 
 def index(request):
-    return render(request, 'index.html')
+    if request.user.is_authenticated:
+        pesquisador = Pesquisador.objects.get(user=request.user)
+        return render(request, 'index.html', {'pesquisador': pesquisador})
+    else:
+        pesquisador = None
+        return render(request, 'index.html', {'pesquisador': pesquisador})
 
 
 @login_required
 def painel(request):
-    pesquisador = Pesquisador.objects.get(user=request.user)
-    return render(request, 'painel/painel.html', {'pesquisador': pesquisador})
+    return render(request, 'painel/painel.html')
 
 
 @login_required
@@ -59,11 +63,18 @@ def editar_participante(request, id_participante):
         form = ParticipanteForm(request.POST, instance=participante)
         if form.is_valid():
             form.save()
-            return redirect('painel')
+            return redirect('ver_participantes')
     else:
         form = ParticipanteForm(instance=participante)
 
     return render(request, 'painel/registro_participante.html', {'form': form})
+
+
+@login_required
+def excluir_participante(request, id_participante):
+    participante = get_object_or_404(Participante, pk=id_participante)
+    participante.delete()
+    return redirect('ver_participantes')
 
 
 @login_required
@@ -89,3 +100,25 @@ def aplicar_questionario(request, id_participante):
 def ver_questionario(request, id_participante):
     questionario = get_object_or_404(Questionario, id_participante=id_participante)
     return render(request, 'painel/ver_questionario.html', {'questionario': questionario})
+
+
+@login_required
+def editar_questionario(request, id_questionario):
+    questionario = get_object_or_404(Questionario, id_questionario=id_questionario)
+
+    if request.method == 'POST':
+        form = QuestionarioForm(request.POST, instance=questionario)
+        if form.is_valid():
+            form.save()
+            return redirect('ver_participantes')
+    else:
+        form = QuestionarioForm(instance=questionario)
+
+    return render(request, 'painel/questionario.html', {'form': form})
+
+
+@login_required
+def excluir_questionario(request, id_questionario):
+    questionario = get_object_or_404(Questionario, pk=id_questionario)
+    questionario.delete()
+    return redirect('ver_participantes')
