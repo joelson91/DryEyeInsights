@@ -11,7 +11,14 @@
     <p><strong>Endereço:</strong> {{ participante.endereco }}</p>
     <p><strong>Data de Cadastro:</strong> {{ participante.dt_cadastro }}</p>
 
-    <a href="{% url 'editar_participante' participante.id_participante %}">Editar</a>
+    <a href="{% url 'editar_participante' participante.id_participante %}">Editar dados</a>
 
-    <a href="{% url 'aplicar_questionario' participante.id_participante %}">Aplicar questionário</a>
+    {% if questionario_preenchido %}
+        <a href="{% url 'ver_questionario' participante.id_participante %}">Ver questionário</a>
+
+    {% else %}
+        <a href="{% url 'aplicar_questionario' participante.id_participante %}">Aplicar questionário</a>
+
+    {% endif %}
+
 {% endblock %}
