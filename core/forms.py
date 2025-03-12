@@ -5,7 +5,14 @@ from core.models import Participante, Questionario
 class ParticipanteForm(forms.ModelForm):
     class Meta:
         model = Participante
-        fields = '__all__'
+        fields = [
+            'nome',
+            'genero',
+            'dt_nascimento',
+            'email',
+            'telefone',
+            'endereco'
+        ]
         widgets = {
             'dt_nascimento': forms.DateInput(attrs={'type': 'date'}, format='%Y-%m-%d'),
             'telefone': forms.TextInput(attrs={'type': 'tel'}),
