@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from core.models import Participante, Pesquisador, Questionario
 from core.forms import ParticipanteForm, QuestionarioForm
+from .prediction.app import fazer_previsao
 
 
 def index(request):
@@ -90,6 +91,7 @@ def aplicar_questionario(request, id_participante):
             questionario = form.save(commit=False)
             questionario.id_pesquisador = pesquisador
             questionario.id_participante = participante
+            questionario.chance_doenca = fazer_previsao(questionario, participante)
             questionario.save()
             return redirect(detalhe_participante, id_participante)
     else:
