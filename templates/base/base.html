@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'index' %}">Início</a></li>
+                <li><a href="{% url 'painel' %}">Painel</a></li>
+                <li><a href="{% url 'ver_participantes' %}">Participantes</a></li>
+                <li><a href="{% url 'criar_participante' %}">Novo participante</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Entrar</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+	<h1>Participantes</h1>
+
+    <table class="table">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for participante in participantes %}
+    <tr>
+        <td>{{ participante.nome }}</td>
+        <td><a href="{% url 'detalhes_participante' participante.id_participante %}">Ver detalhes</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

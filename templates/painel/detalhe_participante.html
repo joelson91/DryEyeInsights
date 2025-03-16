@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h1>Detalhes do participante</h1>
+
+    <p><strong>Nome:</strong> {{ participante.nome }}</p>
+    <p><strong>Gênero:</strong> {{ participante.get_genero_display }}</p>
+    <p><strong>Data de Nascimento:</strong> {{ participante.dt_nascimento }}</p>
+    <p><strong>Email:</strong> {{ participante.email }}</p>
+    <p><strong>Telefone:</strong> {{ participante.telefone }}</p>
+    <p><strong>Endereço:</strong> {{ participante.endereco }}</p>
+    <p><strong>Data de Cadastro:</strong> {{ participante.dt_cadastro }}</p>
+    <p>
+        <strong>Situação do Questionário: {% if participante.status_questionario %}Enviado{% else %}
+            Pendente{% endif %}</strong>
+    </p>
+
+
+    <a href="{% url 'editar_participante' participante.id_participante %}">Editar dados</a>
+
+    <a href="{% url 'excluir_participante' participante.id_participante %}">Excluir participante</a>
+
+    {% if participante.status_questionario %}
+        <a href="{% url 'ver_questionario' participante.id_participante %}">Ver questionário</a>
+
+    {% else %}
+        <a href="{% url 'aplicar_questionario' participante.id_participante %}">Aplicar questionário</a>
+
+    {% endif %}
+
+{% endblock %}
