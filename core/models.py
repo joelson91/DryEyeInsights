@@ -21,6 +21,14 @@ NIVEL_ESTRESSE_CHOICES = [
     (5, 'Muito Alto (Estresse constante, difícil de lidar)'),
 ]
 
+PRESSAO_ARTERIAL_CHOICES = [
+    (1, 'Normal'),
+    (2, 'Elevado'),
+    (3, 'Hipertensão Estágio 1'),
+    (4, 'Hipertensão Estágio 2'),
+    (5, 'Crise Hipertensiva')
+]
+
 PHONE_VALIDATOR = [RegexValidator(regex=r'^\d{10,11}$', message='Telefone inválido')]
 
 
@@ -97,7 +105,7 @@ class Questionario(models.Model):
     duracao_sono = models.FloatField(verbose_name='Duração do sono')
     qualidade_sono = models.IntegerField(choices=QUALIDADE_SONO_CHOICES, verbose_name='Qualidade do sono')
     nivel_estresse = models.IntegerField(choices=NIVEL_ESTRESSE_CHOICES, verbose_name='Nível de estresse')
-    pressao_arterial = models.CharField(max_length=20, verbose_name='Pressão sanguínea')
+    pressao_arterial = models.IntegerField(choices=PRESSAO_ARTERIAL_CHOICES, verbose_name='Pressão sanguínea')
     frequencia_cardiaca = models.IntegerField(verbose_name='Frequência de cardíaca')
     atividade_fisica = models.IntegerField(verbose_name='Atividade Física')
     consumo_cafeina = models.BooleanField(verbose_name='Consome cafeína')
