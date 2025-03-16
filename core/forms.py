@@ -14,7 +14,10 @@ class ParticipanteForm(forms.ModelForm):
             'endereco'
         ]
         widgets = {
-            'dt_nascimento': forms.DateInput(attrs={'type': 'date'}, format='%Y-%m-%d'),
+            'dt_nascimento': forms.DateInput(
+                attrs={'type': 'date'},
+                format='%Y-%m-%d'
+            ),
             'telefone': forms.TextInput(attrs={'type': 'tel'}),
         }
 
@@ -28,13 +31,7 @@ class QuestionarioForm(forms.ModelForm):
             'nivel_estresse',
             'pressao_arterial',
             'frequencia_cardiaca',
-            'passos_diarios',
             'atividade_fisica',
-            'altura',
-            'peso',
-            'disturbio_sono',
-            'despertares_noturnos',
-            'sonolencia_diurna',
             'consumo_cafeina',
             'consumo_alcool',
             'tabagismo',
@@ -46,5 +43,4 @@ class QuestionarioForm(forms.ModelForm):
             'fadiga_ocular',
             'vermelhidao_ocular',
             'irritacao_ocular',
-            'doenca_olho_seco',
         ]

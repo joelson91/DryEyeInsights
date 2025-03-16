@@ -46,14 +46,8 @@ def ver_participantes(request):
 @login_required
 def detalhe_participante(request, id_participante):
     participante = get_object_or_404(Participante, pk=id_participante, id_pesquisador__user=request.user)
-    questionario_preenchido = Questionario.objects.filter(id_participante=participante).exists()
 
-    context = {
-        'participante': participante,
-        'questionario_preenchido': questionario_preenchido,
-    }
-
-    return render(request, 'painel/detalhe_participante.html', context=context)
+    return render(request, 'painel/detalhe_participante.html', {'participante': participante})
 
 
 @login_required

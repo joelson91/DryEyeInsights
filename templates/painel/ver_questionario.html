@@ -32,32 +32,12 @@
             <td>{{ questionario.frequencia_cardiaca }}</td>
         </tr>
         <tr>
-            <td>Passos diários</td>
-            <td>{{ questionario.passos_diarios }}</td>
-        </tr>
-        <tr>
             <td>Atividade Física</td>
             <td>{{ questionario.atividade_fisica }}</td>
         </tr>
         <tr>
-            <td>Altura</td>
-            <td>{{ questionario.altura }}</td>
-        </tr>
-        <tr>
-            <td>Peso</td>
-            <td>{{ questionario.peso }}</td>
-        </tr>
-        <tr>
             <td>Distúrbio do sono</td>
             <td>{% if questionario.disturbio_sono %}Sim{% else %}Não{% endif %}</td>
-        </tr>
-        <tr>
-            <td>Despertares noturnos</td>
-            <td>{% if questionario.despertares_noturnos %}Sim{% else %}Não{% endif %}</td>
-        </tr>
-        <tr>
-            <td>Sonolência diurna</td>
-            <td>{% if questionario.sonolencia_diurna %}Sim{% else %}Não{% endif %}</td>
         </tr>
         <tr>
             <td>Consome cafeína</td>
@@ -105,7 +85,7 @@
         </tr>
         <tr>
             <td>Olho seco</td>
-            <td>{% if questionario.doenca_olho_seco %}Sim{% else %}Não{% endif %}</td>
+            <td>{{ questionario.chance_doenca }}</td>
         </tr>
         </tbody>
     </table>
