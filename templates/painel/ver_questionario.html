@@ -1,5 +1,7 @@
 {% extends 'base/base.html' %}
 
+{% load custom_filters %}
+
 {% block content %}
     <h1>Detalhes do questionário</h1>
 
@@ -85,7 +87,7 @@
         </tr>
         <tr>
             <td>Olho seco</td>
-            <td>{{ questionario.chance_doenca }}</td>
+            <td>{{ questionario.chance_doenca|mul:100|floatformat:2 }}% de chance</td>
         </tr>
         </tbody>
     </table>
