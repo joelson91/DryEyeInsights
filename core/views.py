@@ -101,11 +101,14 @@ def ver_questionario(request, id_participante):
 @login_required
 def editar_questionario(request, id_questionario):
     questionario = get_object_or_404(Questionario, id_questionario=id_questionario)
+    participante = questionario.id_participante
 
     if request.method == 'POST':
         form = QuestionarioForm(request.POST, instance=questionario)
         if form.is_valid():
-            form.save()
+            questionario = form.save(commit=False)
+            questionario.chance_doenca = fazer_previsao(questionario, participante)
+            questionario.save()
             return redirect('ver_participantes')
     else:
         form = QuestionarioForm(instance=questionario)
