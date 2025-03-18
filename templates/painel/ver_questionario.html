@@ -27,7 +27,17 @@
         </tr>
         <tr>
             <td>Pressão sanguínea</td>
-            <td>{{ questionario.pressao_arterial }}</td>
+            <td>
+                {% if questionario.pressao_arterial == 'Elevated' %}
+                    Elevada
+                {% elif questionario.pressao_arterial == 'Hypertension Stage 1' %}
+                    Hipertensão estágio 1
+                {% elif questionario.pressao_arterial == 'Hypertension Stage 2' %}
+                    Hipertensão estágio 1
+                {% elif questionario.pressao_arterial == 'Hypertensive Crisis' %}
+                    Crise hipertensiva
+                {% endif %}
+            </td>
         </tr>
         <tr>
             <td>Frequência cardíaca</td>
