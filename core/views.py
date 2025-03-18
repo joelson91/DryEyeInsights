@@ -8,7 +8,12 @@ from .prediction.app import fazer_previsao
 def index(request):
     if request.user.is_authenticated:
         pesquisador = Pesquisador.objects.get(user=request.user)
-        return render(request, 'index.html', {'pesquisador': pesquisador})
+        participantes_pendentes = Participante.objects.filter(id_pesquisador=pesquisador, status_questionario=False).count()
+        context = {
+            'participantes_pendentes': participantes_pendentes,
+            'pesquisador': pesquisador
+        }
+        return render(request, 'index.html', context=context)
     else:
         pesquisador = None
         return render(request, 'index.html', {'pesquisador': pesquisador})

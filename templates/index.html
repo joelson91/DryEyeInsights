@@ -9,7 +9,13 @@
             <h1>Bem-vinda, {{ user.first_name }}</h1>
         {% endif %}
 
-        <form action="{% url 'logout' %}" method="post">{% csrf_token %}
+        {% if participantes_pendentes %}
+        	<span>Questionários pendentes: <a href="{% url '' %}">{{ participantes_pendentes }}</a></span>
+        {% else %}
+            <span>Não há questionários pendentes</span>
+        {% endif %}
+
+        <form style="margin-top: 2em" action="{% url 'logout' %}" method="post">{% csrf_token %}
             <button type="submit">Sair</button>
         </form>
 
