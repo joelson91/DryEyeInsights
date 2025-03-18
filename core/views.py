@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from core.models import Participante, Pesquisador, Questionario
+from core.models import Participante, Pesquisador, Questionario, ParticipantesPendentes
 from core.forms import ParticipanteForm, QuestionarioForm
 from .prediction.app import fazer_previsao
 
@@ -8,9 +8,9 @@ from .prediction.app import fazer_previsao
 def index(request):
     if request.user.is_authenticated:
         pesquisador = Pesquisador.objects.get(user=request.user)
-        participantes_pendentes = Participante.objects.filter(id_pesquisador=pesquisador, status_questionario=False).count()
+        pendentes = Participante.objects.filter(id_pesquisador=pesquisador, status_questionario=False).count()
         context = {
-            'participantes_pendentes': participantes_pendentes,
+            'participantes_pendentes': pendentes,
             'pesquisador': pesquisador
         }
         return render(request, 'index.html', context=context)
@@ -46,6 +46,12 @@ def ver_participantes(request):
     participantes = Participante.objects.filter(id_pesquisador=pesquisador_id)
     context = {'participantes': participantes}
     return render(request, 'painel/lista_participantes.html', context=context)
+
+
+def participantes_pendentes(request):
+    pesquisador = get_object_or_404(Pesquisador, user=request.user)
+    pendentes = ParticipantesPendentes.objects.filter(id_pesquisador_id=pesquisador.id_pesquisador)
+    return render(request, 'painel/participantes_pendentes.html', {'participantes': pendentes})
 
 
 @login_required

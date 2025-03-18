@@ -129,3 +129,15 @@ class Questionario(models.Model):
         verbose_name = 'Questionário'
         verbose_name_plural = 'Questionários'
         ordering = ['id_questionario']
+
+
+class ParticipantesPendentes(models.Model):
+    id_participante = models.IntegerField(primary_key=True)
+    id_pesquisador_id = models.IntegerField()
+    nome = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'participantes_pendentes'
+        verbose_name = 'Participante pendente'
+        verbose_name_plural = 'Participantes pendentes'

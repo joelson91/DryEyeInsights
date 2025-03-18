@@ -4,6 +4,7 @@ from core import views
 urlpatterns = [
     path('', views.painel, name='painel'),
     path('participantes/', views.ver_participantes, name='ver_participantes'),
+    path('pendentes/', views.participantes_pendentes, name='participantes_pendentes'),
     path('novo-participante/', views.criar_participante, name='criar_participante'),
     path('detalhes/<int:id_participante>/', views.detalhe_participante, name='detalhes_participante'),
     path('editar-participante/<int:id_participante>/', views.editar_participante, name='editar_participante'),
