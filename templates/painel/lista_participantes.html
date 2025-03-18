@@ -8,12 +8,16 @@
         <tr>
             <th>Nome</th>
             <th>Status</th>
+            <th>Ação</th>
         </tr>
         </thead>
         <tbody>
         {% for participante in participantes %}
             <tr>
                 <td>{{ participante.nome }}</td>
+                <td>
+                    {% if participante.status_questionario %}Enviado{% else %}Pendente{% endif %}
+                </td>
                 <td><a href="{% url 'detalhes_participante' participante.id_participante %}">Ver detalhes</a></td>
             </tr>
         {% endfor %}
