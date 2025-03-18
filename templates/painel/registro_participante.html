@@ -3,8 +3,8 @@
 {% block content %}
     <h1>Novo participante</h1>
     <form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Salvar">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Salvar">
     </form>
 {% endblock %}
