@@ -23,10 +23,10 @@ NIVEL_ESTRESSE_CHOICES = [
 
 PRESSAO_ARTERIAL_CHOICES = [
     ('Normal', 'Normal'),
-    ('Elevated', 'Elevado'),
-    ('Hypertension Stage 1', 'Hipertensão Estágio 1'),
-    ('Hypertension Stage 2', 'Hipertensão Estágio 2'),
-    ('Hypertensive Crisis', 'Crise Hipertensiva')
+    ('Elevated', 'Elevada'),
+    ('Hypertension Stage 1', 'Hipertensão estágio 1'),
+    ('Hypertension Stage 2', 'Hipertensão estágio 2'),
+    ('Hypertensive Crisis', 'Crise hipertensiva')
 ]
 
 PHONE_VALIDATOR = [RegexValidator(regex=r'^\d{10,11}$', message='Telefone inválido')]
