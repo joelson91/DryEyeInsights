@@ -116,7 +116,10 @@ def editar_questionario(request, id_questionario):
     if request.method == 'POST':
         form = QuestionarioForm(request.POST, instance=questionario)
         if form.is_valid():
-            form.save()
+            questionario = form.save(commit=False)
+            participante = questionario.id_participante
+            questionario.chance_doenca = fazer_previsao(questionario, participante)
+            questionario.save()
             return redirect('ver_participantes')
     else:
         form = QuestionarioForm(instance=questionario)
